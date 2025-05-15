@@ -5,7 +5,6 @@ def dl_file(url, destination):
     with open(destination, "wb") as fichier:
         for chunk in response.iter_content(chunk_size=8192):  # Télécharge par blocs
             fichier.write(chunk)
-
     print("Fichier téléchargé avec succès !")
 
 url_fonciere = "https://data.economie.gouv.fr/api/explore/v2.1/catalog/datasets/fiscalite-locale-des-particuliers/exports/csv?lang=fr&timezone=Europe%2FParis&use_labels=true&delimiter=%3B"
@@ -25,8 +24,14 @@ THLV : Taxe d’habitation sur les logements vacants
 '''
 dl_file(url_fonciere, destination_fonciere)
 
-url_loy_37m2 = "https://www.data.gouv.fr/fr/datasets/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/#/resources/89956da9-5b9b-41d7-8703-18dbec4d54a2"
-destination_loy_37m2 = "data/loy_37m2.csv"
+url_loyapp12_37m2 = "https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-153048/pred-app12-mef-dhup.csv"
+url_loyapp_52m2 = "https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-153050/pred-app-mef-dhup.csv"
+url_loyapp3_72m2 = "https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-145658/pred-app3-mef-dhup.csv"
+url_loymai_92m2 = "https://static.data.gouv.fr/resources/carte-des-loyers-indicateurs-de-loyers-dannonce-par-commune-en-2024/20241205-145700/pred-mai-mef-dhup.csv"
+destination_loy_37m2 = "data/loyapp12_37m2.csv"
+destination_loy_52m2 = "data/loyapp_52m2.csv"
+destination_loy_72m2 = "data/loyapp3_72m2.csv"
+destination_loy_92m2 = "data/loymai_92m2.csv"
 '''
 id_zone : Identifiant maille
 INSEE_C : Code INSEE de la commune
@@ -41,4 +46,7 @@ nbobs_com : Nombre d’observations dans la commune
 nbobs_mail : Nombre d’observations dans la maille
 R2_adj : Coefficient de détermination ajusté du modèle hédonique servant à l’estimation de l’indicateur de loyer
 '''
-dl_file(url_loy_37m2, destination_loy_37m2)
+dl_file(url_loyapp12_37m2, destination_loy_37m2)
+dl_file(url_loyapp_52m2, destination_loy_52m2)
+dl_file(url_loyapp3_72m2, destination_loy_72m2)
+dl_file(url_loymai_92m2, destination_loy_92m2)
